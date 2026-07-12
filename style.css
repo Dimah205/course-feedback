@@ -1,0 +1,295 @@
+/* ============================================================
+   Course Feedback Form – style.css
+   Aesthetic: Editorial / Refined Academic
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --bg:          #f4f1eb;
+  --surface:     #fffdf8;
+  --accent:      #2d5a3d;
+  --accent-dark: #1a3d29;
+  --accent-light:#e8f0eb;
+  --text:        #1c1c1c;
+  --muted:       #6b7280;
+  --border:      #d4cfc5;
+  --error-bg:    #fff3f3;
+  --error-text:  #b91c1c;
+  --star-active: #e89c2f;
+  --star-idle:   #d4cfc5;
+  --radius:      12px;
+  --shadow:      0 8px 40px rgba(0,0,0,0.09);
+  --transition:  0.22s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 60px;
+
+  /* subtle dot-grid texture */
+  background-image: radial-gradient(circle, #c5bfb3 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ---------- Page Wrapper ---------- */
+.page-wrapper {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ---------- Header ---------- */
+.form-header {
+  text-align: center;
+  padding: 48px 24px 36px;
+}
+
+.header-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid #b8d1bf;
+  border-radius: 100px;
+  padding: 4px 14px;
+  margin-bottom: 18px;
+}
+
+.form-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ---------- Form Card ---------- */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 44px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Form Grid (2-col) ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  margin-bottom: 24px;
+}
+
+/* ---------- Form Groups ---------- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.97rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  resize: none;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+textarea::placeholder {
+  color: #b0a89a;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.12);
+}
+
+/* ---------- Star Rating ---------- */
+.rating-group {
+  margin-bottom: 24px;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 2rem;
+  color: var(--star-idle);
+  cursor: pointer;
+  transition: color var(--transition), transform var(--transition);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* highlight selected star and all stars before it (to the right in reversed row) */
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: var(--star-active);
+  transform: scale(1.15);
+}
+
+.rating-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ---------- Error Box ---------- */
+.error-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--error-bg);
+  border: 1.5px solid #fca5a5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  color: var(--error-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideIn 0.25s ease;
+}
+
+.error-box[hidden] { display: none; }
+
+.error-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Submit Button ---------- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 14px rgba(45, 90, 61, 0.28);
+}
+
+.btn-submit:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(45, 90, 61, 0.36);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(45, 90, 61, 0.22);
+}
+
+.btn-arrow {
+  font-size: 1.1rem;
+  transition: transform var(--transition);
+}
+
+.btn-submit:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- Footer ---------- */
+.form-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 28px 0 0;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .form-card {
+    padding: 28px 20px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-actions {
+    justify-content: stretch;
+  }
+  .btn-submit {
+    width: 100%;
+    justify-content: center;
+  }
+}

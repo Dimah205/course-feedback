@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Feedback Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <header class="form-header">
+      <div class="header-tag">Academic Portal</div>
+      <h1>Course Feedback</h1>
+      <p class="subtitle">Your voice shapes better learning experiences.</p>
+    </header>
+
+    <main class="form-card">
+      <form id="feedbackForm" action="submit.php" method="POST" novalidate>
+
+        <div class="form-grid">
+
+          <!-- Student Name -->
+          <div class="form-group">
+            <label for="studentName">Student Name</label>
+            <input
+              type="text"
+              id="studentName"
+              name="studentName"
+              placeholder="e.g. Ali Hassan"
+              autocomplete="name"
+            />
+          </div>
+
+          <!-- Student ID -->
+          <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input
+              type="text"
+              id="studentId"
+              name="studentId"
+              placeholder="e.g. 20231045"
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="e.g. ali@university.edu"
+              autocomplete="email"
+            />
+          </div>
+
+          <!-- Course Name -->
+          <div class="form-group">
+            <label for="courseName">Course Name</label>
+            <input
+              type="text"
+              id="courseName"
+              name="courseName"
+              placeholder="e.g. Web Development 101"
+            />
+          </div>
+
+        </div>
+
+        <!-- Rating -->
+        <div class="form-group rating-group">
+          <label>Course Rating</label>
+          <div class="star-rating" role="group" aria-label="Rating from 1 to 5">
+            <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5" title="Excellent">&#9733;</label>
+
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" title="Good">&#9733;</label>
+
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" title="Average">&#9733;</label>
+
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" title="Poor">&#9733;</label>
+
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" title="Very Poor">&#9733;</label>
+          </div>
+          <span class="rating-hint">Select a star to rate (1 = lowest, 5 = highest)</span>
+        </div>
+
+        <!-- Comment -->
+        <div class="form-group full-width">
+          <label for="comment">Your Comments</label>
+          <textarea
+            id="comment"
+            name="comment"
+            rows="5"
+            placeholder="Share your thoughts about the course (min. 10 characters)..."
+          ></textarea>
+        </div>
+
+        <!-- Validation Error Box -->
+        <div id="errorBox" class="error-box" hidden>
+          <span class="error-icon">⚠</span>
+          <span id="errorMsg"></span>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="btn-submit">
+            <span class="btn-text">Submit Feedback</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+
+      </form>
+    </main>
+
+    <footer class="form-footer">
+      © 2026 University Academic Portal &nbsp;·&nbsp; All rights reserved
+    </footer>
+  </div>
+
+  <script src="validate.js"></script>
+</body>
+</html>
