@@ -68,7 +68,8 @@ After successful validation, the system:
 
 ## Screenshot
 
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/81c760bb-a370-476c-b6c5-271e917da9f4" />
+<img width="1920" height="891" alt="Screenshot 2026-07-17 171004" src="https://github.com/user-attachments/assets/08be761e-2b10-4f50-aa9f-5d0445b90a0f" />
+
 
 ## Future Improvements
 - Store feedback in a MySQL database
